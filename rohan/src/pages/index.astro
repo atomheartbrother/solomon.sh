@@ -1,0 +1,170 @@
+---
+import Icon from "astro-icon";
+import SocialIcon from "../components/SocialIcon.astro";
+
+import { SITE_TITLE } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{SITE_TITLE}</title>
+  </head>
+  
+  <body class="dark:bg-[#192d1c] bg-[#f7fceb]">
+    <button id="dark-mode-toggle" class="mb-2 mt-2">
+      <Icon name="tabler:moon-stars" class="w-6 h-6 dark:text-white" />
+    </button>
+
+    <div id="header" class="text-center mb-12">
+      <h1 class="text-4xl text-[#2f5436] font-bold mb-1 dark:text-[#91c499]">Rohan Solomon</h1>
+      <h2 class="text-3xl text-[#2f5436] font-semibold mb-1 dark:text-[#91c499]">Data Engineer</h2>
+      <h3 class="text-xl">
+        <a href="mailto:rohan@solomon.sh"
+          class="hover:text-[#2f5436] text-[#2e3b30] dark:text-[#dad8e3] dark:hover:text-[#91c499] underline">
+          rohan@solomon.sh
+        </a>
+      </h3>
+    </div>
+
+    <div id="work" class="mb-6">
+      <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Professional Experience</h4>
+      <hr class="bg-black h-0.5 mb-3" />
+
+      <div class="flex-1 text-[#2e3b30]">
+          <div class="font-bold text-lg dark:text-[#b8d8be]">
+            <p>Data Engineer II</p>
+            <p>The General Insurance - Remote</p>
+            <p>Sept 2020 - Current</p>
+          </div>
+
+          <div class="w-auto text-lg dark:text-[#dad8e3]">
+            <li>Developed Fivetran alternative in Python. Allowed us to incrementally load new data from AWS DynamoDB, Snowflake, PostgreSQL to GCP BigQuery and saved $94K annually by decommissioning Fivetran SaaS</li>
+            <li>Lead POC efforts to find better software solutions when current solutions underperformed/became overpriced</li>
+            <li>Created Python pipelines to efficiently transfer data from SFTP sources, other cloud services into GCP</li>
+            <li>Created SQL stored procedures in GCP to perform automatic unit testing on new data in prod environments</li>
+            <li>Helped develop Point In Time architechture database for policy data in GCP</li>
+            <li>Built “Business Purpose Layer” tables from raw data in GCP which allowed departments to easily digest and manipulate data for business critical reporting</li>
+            <li>Developed Alteryx Gallery API python wrapper for programmatic interaction with our Alteryx Server cluster</li>
+          </div>
+      </div>
+      
+      <br>
+
+      <div class="flex-1 text-[#2e3b30] ">
+          <div class="font-bold text-lg dark:text-[#b8d8be]">
+            <p>Data Engineer</p>
+            <p>World Fuel Services - Houston, TX</p>
+            <p>Nov 2019 - May 2020</p>
+          </div>
+
+          <div class="w-auto text-lg dark:text-[#dad8e3]">
+            <li>Initialized the move from on-prem databases to Snowflake for cheaper, more secure, and simpler access to company databases</li>
+            <li>Developed Alteryx Analysis Applications which allowed regular users to perform actions that previously needed assistance from the Data Team</li>
+            <li>Built Python ETL to clean and load data from sFTP retrieved text files into Snowflake</li>
+          </div>
+      </div>
+
+      <br>
+
+      <div class="flex-1 text-[#2e3b30] ">
+          <div class="font-bold text-lg dark:text-[#b8d8be]">
+            <p>Data Analyst</p>
+            <p>CarData Inc. - Houston, TX</p>
+            <p>Jan 2017 - Dec 2017</p>
+          </div>
+          
+          <div class="w-auto text-lg dark:text-[#dad8e3]">
+            <li>Designed and developed highly customized, interactive visualizations for executive dashboards using Tableau</li>
+            <li>Led design and development of financial reporting dashboards for executive dashboards</li>
+            <li>Daily use of MySQL to track of all vehicles that need to be photographed and those that have been photographed</li>
+          </div>
+      </div>
+    </div>
+
+    <div id="skills">
+      <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Skills and interests</h4>
+      <hr class="bg-black h-0.5 mb-3" />
+
+      <div class="flex text-[#2e3b30]">
+        <div class="mr-2 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Tech Stack</div>
+          <div class="dark:text-[#dad8e3] text-lg mb-3">Python, SQL, Airflow, Terraform, Bash, Git, CI/CD, LookML, Rust</div>
+      </div>
+
+      <div class="flex text-[#2e3b30]">
+        <p class="mr-2 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Cloud</p>
+          <p class="text-lg mb-3 dark:text-[#dad8e3]">Google Cloud Platform, Amazon Web Services, Snowflake</p>
+      </div>
+    
+      <div class="flex text-[#2e3b30]">
+        <p class="mr-2 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Interests</p>
+          <p class="text-lg dark:text-[#dad8e3]">Linux, computer building, graphic design, hiking, and working on my car!</p>
+      </div>
+    </div>
+    
+  <br>
+
+  <div id="education" class="mb-6">
+    <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Education</h4>
+    <hr class="bg-black h-0.5 mb-3" />
+
+      <div class="flex text-[#2e3b30] dark:text-[#dad8e3]">
+        <p class="mr-2 w-28 font-bold text-lg">Aug 2015 - Aug 2017</p>
+
+        <div class="flex-1 text-lg">
+          <p class="font-bold ">University of Houston</p>
+            <p>Associates in Data Processing</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <div id="social" class="justify-center flex mb-2">
+    <div class="mr-4">
+      <SocialIcon
+        icon="fa-brands:linkedin"
+        label="linkedin"
+        url="https://www.linkedin.com/in/rohsolomon/"
+      />
+    </div>
+    <div class="mr-4">
+      <SocialIcon
+        icon="fa-brands:stack-overflow"
+        label="stack-overflow"
+        url="https://stackoverflow.com/users/6338975/atomheartbrother"
+      />
+    </div>
+  </div>
+
+  <script is:inline>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    window.onload = function () {
+      const element = document.getElementById("dark-mode-toggle");
+
+      if (element) {
+        element.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+
+          localStorage.theme = document.documentElement.classList.contains(
+            "dark"
+          )
+            ? "dark"
+            : "light";
+        });
+      }
+    };
+  </script>
+</html>
