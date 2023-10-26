@@ -15,34 +15,34 @@ import "../styles/global.css";
     <title>{SITE_TITLE}</title>
   </head>
   
-  <body class="dark:bg-[#192d1c] bg-[#f7fceb]">
+  <body class="dark:bg-[#192d1c] bg-[#e9fbd6]">
     <button id="dark-mode-toggle" class="mb-2 mt-2">
-      <Icon name="tabler:moon-stars" class="w-6 h-6 dark:text-white" />
+      <Icon name="tabler:moon-stars" class="w-6 h-6 dark:text-white"/>
     </button>
 
-    <div id="header" class="text-center mb-12">
-      <h1 class="text-4xl text-[#2f5436] font-bold mb-1 dark:text-[#91c499]">Rohan Solomon</h1>
-      <h2 class="text-3xl text-[#2f5436] font-semibold mb-1 dark:text-[#91c499]">Data Engineer</h2>
-      <h3 class="text-xl">
-        <a href="mailto:rohan@solomon.sh"
-          class="hover:text-[#2f5436] text-[#2e3b30] dark:text-[#dad8e3] dark:hover:text-[#91c499] underline">
-          rohan@solomon.sh
-        </a>
+    <div id="header" class="text-center mb-10">
+      <h1 class="text-4xl text-[#2f5436] font-bold mb-1 dark:text-[#91c499]">ROHAN SOLOMON</h1>
+      <h2 class="text-3xl text-[#2f5436] font-semibold mb-1 dark:text-[#91c499]">Data Engineer II</h2>
+      <h3 class="flex-1 text-xl text-[#2e3b30] dark:text-[#dad8e3]">
+        <a href="https://docs.google.com/document/u/0/export?format=docx&id=1L2mhMfpjZkhIRTfEVDvl9q15kfghv52C&token=AC4w5VjJAdwBiDaXlaOADDjLHKpe9ux_AQ:1698351409724" class="hover:text-[#2f5436] dark:hover:text-[#91c499] underline">Resume (.docx)</a> 
+        | <a href="mailto:rohan@solomon.sh" class="hover:text-[#2f5436] dark:hover:text-[#91c499] underline">rohan@solomon.sh</a> 
+        | <a href="tel:832-319-0434" class="hover:text-[#2f5436] dark:hover:text-[#91c499] underline">(832) 319-0434</a>
       </h3>
+
     </div>
 
     <div id="work" class="mb-6">
       <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Professional Experience</h4>
       <hr class="bg-black h-0.5 mb-3" />
 
-      <div class="flex-1 text-[#2e3b30]">
-          <div class="font-bold text-lg dark:text-[#b8d8be]">
+      <div class="flex-1">
+          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
             <p>Data Engineer II</p>
             <p>The General Insurance - Remote</p>
             <p>Sept 2020 - Current</p>
           </div>
 
-          <div class="w-auto text-lg dark:text-[#dad8e3]">
+          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
             <li>Developed Fivetran alternative in Python. Allowed us to incrementally load new data from AWS DynamoDB, Snowflake, PostgreSQL to GCP BigQuery and saved $94K annually by decommissioning Fivetran SaaS</li>
             <li>Lead POC efforts to find better software solutions when current solutions underperformed/became overpriced</li>
             <li>Created Python pipelines to efficiently transfer data from SFTP sources, other cloud services into GCP</li>
@@ -55,14 +55,14 @@ import "../styles/global.css";
       
       <br>
 
-      <div class="flex-1 text-[#2e3b30] ">
-          <div class="font-bold text-lg dark:text-[#b8d8be]">
+      <div class="flex-1">
+          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
             <p>Data Engineer</p>
             <p>World Fuel Services - Houston, TX</p>
             <p>Nov 2019 - May 2020</p>
           </div>
 
-          <div class="w-auto text-lg dark:text-[#dad8e3]">
+          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
             <li>Initialized the move from on-prem databases to Snowflake for cheaper, more secure, and simpler access to company databases</li>
             <li>Developed Alteryx Analysis Applications which allowed regular users to perform actions that previously needed assistance from the Data Team</li>
             <li>Built Python ETL to clean and load data from sFTP retrieved text files into Snowflake</li>
@@ -71,14 +71,14 @@ import "../styles/global.css";
 
       <br>
 
-      <div class="flex-1 text-[#2e3b30] ">
-          <div class="font-bold text-lg dark:text-[#b8d8be]">
+      <div class="flex-1">
+          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
             <p>Data Analyst</p>
             <p>CarData Inc. - Houston, TX</p>
             <p>Jan 2017 - Dec 2017</p>
           </div>
           
-          <div class="w-auto text-lg dark:text-[#dad8e3]">
+          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
             <li>Designed and developed highly customized, interactive visualizations for executive dashboards using Tableau</li>
             <li>Led design and development of financial reporting dashboards for executive dashboards</li>
             <li>Daily use of MySQL to track of all vehicles that need to be photographed and those that have been photographed</li>
@@ -90,19 +90,19 @@ import "../styles/global.css";
       <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Skills and interests</h4>
       <hr class="bg-black h-0.5 mb-3" />
 
-      <div class="flex text-[#2e3b30]">
-        <div class="mr-10 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Tech Stack</div>
-          <div class="dark:text-[#dad8e3] text-lg mb-3">Python, SQL, Composer/Airflow, Lambda, BigQuery, DynamoDB, Terraform, Qlik Replicate, Bash, Git, CI/CD, Rust, LookML</div>
+      <div class="flex">
+        <div class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Tech Stack</div>
+          <div class="mb-3 flex-1 text-[#2b4329] dark:text-[#f2fff1] text-lg">Python, SQL, Composer/Airflow, Lambda, BigQuery, DynamoDB, Terraform, Qlik Replicate, Bash, Git, CI/CD, Rust, LookML</div>
       </div>
 
-      <div class="flex text-[#2e3b30]">
-        <p class="mr-2 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Cloud</p>
-          <p class="text-lg mb-3 dark:text-[#dad8e3]">Google Cloud Platform, Amazon Web Services, Snowflake</p>
+      <div class="flex">
+        <p class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Cloud</p>
+          <p class="mb-3 flex-1 text-lg text-[#2b4329] dark:text-[#f2fff1]">Google Cloud Platform, Amazon Web Services, Snowflake</p>
       </div>
     
-      <div class="flex text-[#2e3b30]">
-        <p class="mr-2 w-28 mb-3 font-bold text-lg dark:text-[#b8d8be]">Interests</p>
-          <p class="text-lg dark:text-[#dad8e3]">Linux, computer building, graphic design, hiking, and working on my car!</p>
+      <div class="flex">
+        <p class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Interests</p>
+          <p class="mb-3 flex-1 text-lg text-[#2b4329] dark:text-[#f2fff1]">Linux, computer building, graphic design, hiking, and working on my car!</p>
       </div>
     </div>
     
@@ -112,10 +112,10 @@ import "../styles/global.css";
     <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Education</h4>
     <hr class="bg-black h-0.5 mb-3" />
 
-      <div class="flex text-[#2e3b30] dark:text-[#b8d8be]">
+      <div class="flex text-[#314c2f] dark:text-[#b8d8be]">
         <p class="mr-2 w-28 font-bold text-lg">University of Houston</p>
 
-        <div class="flex-1 text-lg mb-3 dark:text-[#dad8e3]">
+        <div class="flex-1 text-lg mb-3 text-[#2b4329] dark:text-[#f2fff1]">
           <p class="font-bold">Associates in Data Processing</p>
             <p></p>
             <p>Aug 2015 - Aug 2017</p>
