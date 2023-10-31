@@ -1,0 +1,45 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+ @font-face {
+    font-family: "ibm";
+    src:
+      local("ibm"),
+      url("/assets/IBMPlexMono-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "ys";
+    src:
+      local("ys"),
+      url("/assets/YoungSerif-Regular.ttf") format("ttf");
+  }
+
+body {
+    font-family: Helvetica;
+    margin: auto;
+    padding-top: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 30px;
+    max-width: 100ch;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+}
+li {
+  margin: 0.5ch;
+  margin-top: 1.9ch;
+}
+
+li:first-child {
+    margin-top: 2ch;
+}
+
+li:last-child{
+    margin-bottom: 3%;
+}
