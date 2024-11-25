@@ -1,169 +1,183 @@
 ---
-import Icon from "astro-icon";
-import SocialIcon from "../components/SocialIcon.astro";
+import PageLayout from '../layouts/BaseLayout.astro'
+import Section from '../components/Section.astro'
+import Card from '../components/Card.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import Label from '../components/Label.astro'
+import SkillLayout from '../components/SkillLayout.astro'
+import PostPreview from '@/components/blog/PostPreview.astro'
 
-import { SITE_TITLE } from "../config";
-import "../styles/global.css";
+import { Image } from 'astro:assets'
+import astro from '../assets/about-astro.png'
+
+import { getAllPosts, sortMDByDate } from '@/utils'
+
+const languages = ['Python', 'SQL', 'Terraform', 'Bash', 'Rust']
+const cloud = ['Google Cloud Platform', 'AWS', 'Snowflake']
+const databases = ['BigQuery', 'DynamoDB', 'MSSQL Server', 'IBM AS400']
+const others = ['Apache Airflow', 'Kubernetes', 'CI/CD', 'Docker', 'Git']
+
+const MAX_POSTS = 10
+const allPosts = await getAllPosts()
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{SITE_TITLE}</title>
-  </head>
-  
-  <body class="dark:bg-[#192d1c] bg-[#e9fbd6]">
-    <button id="dark-mode-toggle" class="mb-2 mt-2">
-      <Icon name="tabler:moon-stars" class="w-6 h-6 dark:text-white"/>
-    </button>
+<PageLayout meta={{ title: 'Home' }}>
+	<div class='flex w-full flex-col gap-y-10'>
+		<section class='flex flex-col items-center gap-y-7'>
+			<Image
+				src={astro}
+				alt='profile photo'
+				class='h-28 w-auto rounded-full bg-[#FFBE98] p-2'
+				loading='eager'
+			/>
 
-    <div id="header" class="text-center mb-10">
-      <h1 class="text-4xl text-[#2f5436] font-bold mb-1 dark:text-[#91c499]">ROHAN SOLOMON</h1>
-      <h2 class="text-3xl text-[#2f5436] font-semibold mb-1 dark:text-[#91c499]">Data Engineer II</h2>
-      <h3 class="flex-1 text-xl text-[#314c2f] dark:text-[#b8d8be]">
-        <a target="_blank" rel="noopener noreferrer" href="mailto:rohan@solomon.sh" class="font-bold hover:text-[#2f5436] dark:hover:text-[#91c499] underline">Email</a> 
-        | <a href="tel:832-319-0434" class="font-bold hover:text-[#2f5436] dark:hover:text-[#91c499] underline">Phone</a>
-        | <p class="inline-flex font-bold">Remote</p>
-      </h3>
-      <h3 class="flex-1 text-xl text-[#314c2f] dark:text-[#b8d8be]">
-        <p class="inline-flex font-bold">Resume:</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/u/0/export?format=docx&id=1L2mhMfpjZkhIRTfEVDvl9q15kfghv52C&token=AC4w5VjJAdwBiDaXlaOADDjLHKpe9ux_AQ:1698351409724" class="hover:text-[#2f5436] dark:hover:text-[#91c499] underline">.docx</a>
-        | <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/u/0/export?format=pdf&id=1L2mhMfpjZkhIRTfEVDvl9q15kfghv52C&token=AC4w5Vit5MGCEfjEKl0bJJzNvc8qXRCAZw:1698356204585" class="hover:text-[#2f5436] dark:hover:text-[#91c499] underline">.pdf</a>
-      </h3>
+			<div class='flex flex-col items-center gap-y-4'>
+				<h1 class='text-3xl font-bold'>Rohan Solomon</h1>
+				<h2 class='text-2xl font-bold'>Senior Data Engineer</h2>
 
-    </div>
-    
-    <div id="work" class="mb-6">
-      <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Professional Experience</h4>
-      <hr class="bg-black h-0.5 mb-3" />
+				<div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+					<Label title='Remote (USA)'>
+						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='h-5 w-5' slot='icon'
+							><path
+								fill='currentColor'
+								d='M12.003 11.73q.668 0 1.14-.475q.472-.475.472-1.143t-.475-1.14q-.476-.472-1.143-.472t-1.14.476q-.472.475-.472 1.143t.475 1.14q.476.472 1.143.472M12 19.677q2.82-2.454 4.458-4.991q1.638-2.538 1.638-4.39q0-2.744-1.737-4.53T12 3.981q-2.621 0-4.359 1.785t-1.737 4.53q0 1.852 1.638 4.39q1.639 2.537 4.458 4.99m0 1.343q-3.525-3.117-5.31-5.814q-1.786-2.697-1.786-4.909q0-3.173 2.066-5.234Q9.037 3 12 3t5.03 2.062q2.066 2.061 2.066 5.234q0 2.212-1.785 4.909q-1.786 2.697-5.311 5.814m0-10.904'
+							></path></svg
+						>
+					</Label>
+					<Label
+						title='Connect on Linkedin'
+						as='a'
+						href='https://www.linkedin.com/in/rohsolomon/'
+						target='_blank'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 16 16'
+							slot='icon'
+							class='h-5 w-5 text-foreground/75'
+							><path
+								fill='currentColor'
+								d='M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248c-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878 1.232-.878c.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z'
+							></path></svg
+						>
+					</Label>
+				</div>
+			</div>
+		</section>
 
-      <div class="flex-1">
-          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
-            <p>Data Engineer II</p>
-            <p>The General Insurance - Remote</p>
-            <p>Sept 2020 - Current</p>
-          </div>
+		<Section title='About'>
+			<p class='text-foreground'>
+				Hi, I'm Rohan! I'm a Senior Data Engineer who loves building cloud-native architectures, with a focus on crafting enterprise-scale data infrastructure and AI solutions that actually make a difference.
+				I take pride in developing elegant solutions to complex problems - from creating company-wide Python frameworks to architecting RAG-enabled AI platforms and engineering ETL solutions that have saved my companies significant operational costs.
+			</p>	
+			
+			<p>	
+				My work has placed me in the top 1% of employees for technical innovation, but what really drives me is seeing my solutions make other developers' lives easier. 
+				When I'm not at work, you'll find me diving into personal coding projects, exploring new technologies, or pursuing my passions for art and environmental conservation.
+			</p>
 
-          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
-            <li>Developed Fivetran alternative in Python. Allowed us to incrementally load new data from AWS DynamoDB, Snowflake, PostgreSQL to GCP BigQuery and saved $94K annually by decommissioning Fivetran SaaS</li>
-            <li>Lead POC efforts to find better software solutions when current solutions underperformed/became overpriced</li>
-            <li>Created Python pipelines to efficiently transfer data from SFTP sources, other cloud services into GCP</li>
-            <li>Created SQL stored procedures in GCP to perform automatic unit testing on new data in prod environments</li>
-            <li>Helped develop Point In Time architechture database for policy data in GCP</li>
-            <li>Built “Business Purpose Layer” tables from raw data in GCP which allowed departments to easily digest and manipulate data for business critical reporting</li>
-            <li>Developed Alteryx Gallery API python wrapper for programmatic interaction with our Alteryx Server cluster</li>
-          </div>
-      </div>
-      
-      <br>
+		</Section>
 
-      <div class="flex-1">
-          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
-            <p>Data Engineer</p>
-            <p>World Fuel Services - Houston, TX</p>
-            <p>Nov 2019 - May 2020</p>
-          </div>
+		<Section title='Skills'>
+			<SkillLayout title='Languages' skills={languages}  />
+			<SkillLayout title='Cloud' skills={cloud} />
+			<SkillLayout title='Databases' skills={databases} />
+			<SkillLayout title='Others' skills={others} />
+		</Section>
 
-          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
-            <li>Initialized the move from on-prem databases to Snowflake for cheaper, more secure, and simpler access to company databases</li>
-            <li>Developed Alteryx Analysis Applications which allowed regular users to perform actions that previously needed assistance from the Data Team</li>
-            <li>Built Python ETL to clean and load data from sFTP retrieved text files into Snowflake</li>
-          </div>
-      </div>
+		<Section title='Experience'>
+			<Card
+				heading='Senior Data Engineer'
+				subheading='The General Insurance'
+				location='Remote'
+				date='Sept 2021 - Current'
+			>
+				<ul class='ml-4 list-disc text-foreground space-y-2'>
+					<li>Developed Python framework that abstracted GCP, SFTP, GitLab, and email APIs, accelerating data pipeline development and reducing onboarding time for new engineers.</li>
+					<li>Spearheaded development of full-stack AI platform featuring multi-model support, Retrieval-Augmented Generation (RAG), and multimodal capabilities.</li>
+					<li>Awarded top 1% employee recognition award for excellence in work performance.</li>
+					<li>Developed a Python-based alternative to Fivetran, enabling incremental data loads from AWS DynamoDB, Snowflake, and PostgreSQL to BigQuery, resulting in $94K annual savings.</li>
+					<li>Designed and implemented scalable CI/CD template ecosystem adopted by 100+ repositories across multiple engineering teams, standardizing deployment practices and reducing configuration times.</li>
+					<li>Built efficient & robust data pipelines for automatic data transfer from SFTP sources and various cloud infrastructures to GCP.</li>
+					<li>Implemented high-performance AWS Lambda functions for real-time DynamoDB Stream processing, achieving sub-second latency for mission-critical data transformations.</li>
+					<li>Created an Alteryx Gallery API Python wrapper for enhanced programmatic interaction with Alteryx clusters.</li>
+				</ul>
+			</Card>
+			<Card
+				heading='Data Engineer'
+				subheading='World Fuel Services'
+				location='Houston, TX / Remote'
+				date='Nov 2019 - May 2020'
+			>
+				<ul class='ml-4 list-disc text-foreground'>
+					<li>Initialized the move from on-prem databases to Snowflake for cheaper, more secure, and simpler access to company databases</li>
+					<li>Developed Alteryx Analysis Applications which allowed regular users to perform actions that previously needed assistance from the Data Team</li>
+					<li>Built Python ETL to clean and load data from sFTP retrieved text files into Snowflake</li>
+				</ul>
+			</Card>
 
-      <br>
+			<Card
+				heading='Data Analyst'
+				subheading='CarData'
+				location='Houston, TX'
+				date='Jan 2017 - Dec 2017'
+			>
+				<ul class='ml-4 list-disc text-foreground'>
+					<li>Initialized the move from on-prem databases to Snowflake for cheaper, more secure, and simpler access to company databases</li>
+					<li>Developed Alteryx Analysis Applications which allowed regular users to perform actions that previously needed assistance from the Data Team</li>
+					<li>Built Python ETL to clean and load data from sFTP retrieved text files into Snowflake</li>
+				</ul>
+			</Card>
+		</Section>
 
-      <div class="flex-1">
-          <div class="font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">
-            <p>Data Analyst</p>
-            <p>CarData Inc. - Houston, TX</p>
-            <p>Jan 2017 - Dec 2017</p>
-          </div>
-          
-          <div class="w-auto text-lg text-[#2b4329] dark:text-[#f2fff1]">
-            <li>Designed and developed highly customized, interactive visualizations for executive dashboards using Tableau</li>
-            <li>Led design and development of financial reporting dashboards for executive dashboards</li>
-            <li>Daily use of MySQL to track of all vehicles that need to be photographed and those that have been photographed</li>
-          </div>
-      </div>
-    </div>
+		<Section title='Education'>
+			<Card
+				heading='Data Processing Associates'
+				subheading='University of Houston'
+				location='Houston, TX'
+				date='Aug 2015 - Aug 2017'
+				imagePath='/src/assets/uh4.png'
+				altText='Lorem, ipsum dolor sit'
+				imageClass='h-20 w-auto md:-left-40 '
+			>
+			</Card>
+		</Section>
 
-    <div id="skills">
-      <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Skills and interests</h4>
-      <hr class="bg-black h-0.5 mb-3" />
+		<!-- <Section title='Projects'>
+			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
+				<ProjectCard
+					href='https://www.google.com'
+					heading='Consectetur'
+					subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+					imagePath='/src/assets/coming-soon.png'
+					altText='Example'
+					class='w-full sm:w-1/2'
+				/>
+				<ProjectCard
+					as='div'
+					heading='Coming soon...'
+					subheading=''
+					imagePath='/src/assets/coming-soon.png'
+					altText='Lorem, ipsum dolor sit'
+					class='w-full sm:w-1/2'
+				/>
+			</div>
+		</Section> -->
 
-      <div class="flex">
-        <div class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Tech Stack</div>
-          <div class="mb-3 flex-1 text-[#2b4329] dark:text-[#f2fff1] text-lg">Python, SQL, Composer/Airflow, Lambda, BigQuery, DynamoDB, Terraform, Qlik Replicate, Bash, Git, CI/CD, Rust, LookML</div>
-      </div>
+		{
+			allPostsByDate.length > 0 && (
+				<Section title='Posts'>
+					<ul class='flex flex-col gap-y-2'>
+						{allPostsByDate.map((p) => (
+							<li class='flex flex-col gap-x-2 sm:flex-row'>
+								<PostPreview post={p} />
+							</li>
+						))}
+					</ul>
+				</Section>
+			)
+		}
 
-      <div class="flex">
-        <p class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Cloud</p>
-          <p class="mb-3 flex-1 text-lg text-[#2b4329] dark:text-[#f2fff1]">Google Cloud Platform, Amazon Web Services, Snowflake</p>
-      </div>
-    
-      <div class="flex">
-        <p class="w-28 mb-3 font-bold text-lg text-[#314c2f] dark:text-[#b8d8be]">Interests</p>
-          <p class="mb-3 flex-1 text-lg text-[#2b4329] dark:text-[#f2fff1]">Linux, computer building, graphic design, hiking, and working on my car!</p>
-      </div>
-    </div>
-    
-  <br>
-
-  <div id="education" class="mb-6">
-    <h4 class="text-xl text-[#2f5436] font-bold uppercase mb-1 dark:text-[#91c499]">Education</h4>
-    <hr class="bg-black h-0.5 mb-3" />
-
-      <div class="flex text-[#314c2f] dark:text-[#b8d8be]">
-        <p class="mr-2 w-28 font-bold text-lg">University of Houston</p>
-
-        <div class="flex-1 text-lg mb-3 text-[#2b4329] dark:text-[#f2fff1]">
-          <p class="font-bold">Associates in Data Processing</p>
-            <p></p>
-            <p>Aug 2015 - Aug 2017</p>
-        </div>
-      </div>
-    </div>
-  </body>
-
-  <div id="social" class="justify-center flex mb-2">
-    <div class="mr-4">
-      <SocialIcon
-        icon="fa-brands:linkedin"
-        label="linkedin"
-        url="https://www.linkedin.com/in/rohsolomon/"
-      />
-    </div>
-  </div>
-
-  <script is:inline>
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    window.onload = function () {
-      const element = document.getElementById("dark-mode-toggle");
-
-      if (element) {
-        element.addEventListener("click", () => {
-          document.documentElement.classList.toggle("dark");
-
-          localStorage.theme = document.documentElement.classList.contains(
-            "dark"
-          )
-            ? "dark"
-            : "light";
-        });
-      }
-    };
-  </script>
-</html>
+	</div>
+</PageLayout>
