@@ -1,0 +1,100 @@
+---
+import { Picture } from 'astro:assets';
+const images = await Astro.glob('../assets/*.{jpeg,jpg}');
+
+const imageData = images.map(image => ({
+  src: image.default,
+  alt: image.default.src.split('/').pop().split('.')[0].replace(/_/g, ' '),
+  object_position: 'object-center'
+}));
+
+const imageClass = 'h-52 max-w-full m-auto object-cover rounded-lg shadow-lg dark:shadow-gray-800';
+
+const initialIndex = Math.floor(Math.random() * imageData.length);
+---
+
+<div class="relative group">
+  <button 
+    id="refresh-image" 
+    class="absolute bottom-2 right-2 p-1 bg-black/20 hover:bg-black/30 rounded-lg shadow-sm z-10 transition-all duration-200 backdrop-blur-sm"
+    aria-label="Load new random image"
+  >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      class="h-5 w-5 text-white/50" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    >
+      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+      <path d="M21 3v5h-5" />
+      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+      <path d="M3 21v-5h5" />
+    </svg>
+  </button>
+
+  <div id="pictures-container">
+    {imageData.map((image, index) => (
+      <div 
+        class={`transition-opacity duration-300 ${index === initialIndex ? 'block' : 'hidden'}`} 
+        data-image-index={index}
+      >
+        <Picture 
+          src={image.src}
+          alt={image.alt}
+          widths={[240, 540, 720, 1080]}
+          sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1080px) 720px, 1080px"
+          formats={['avif', 'webp', 'jpg']}
+          loading={index === initialIndex ? 'eager' : 'lazy'}
+          class={imageClass}
+        />
+      </div>
+    ))}
+  </div>
+  
+  <div id="image-tooltip" class="absolute left-1/2 -translate-x-1/2 -bottom-12 z-10 px-3 py-2 text-sm text-white bg-gray-900 rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+    <span id="image-alt">{imageData[initialIndex].alt}</span>
+    <div class="absolute -top-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+  </div>
+</div>
+
+<script>
+  let currentIndex = Number(document.querySelector('[data-image-index]:not(.hidden)')?.getAttribute('data-image-index') || 0);
+  const totalImages = document.querySelectorAll('[data-image-index]').length;
+
+  function showImage(index: number) {
+    document.querySelectorAll('[data-image-index]').forEach((el) => {
+      el.classList.add('hidden');
+      el.classList.remove('block');
+    });
+
+    const selectedImage = document.querySelector(`[data-image-index="${index}"]`);
+    if (selectedImage) {
+      selectedImage.classList.remove('hidden');
+      selectedImage.classList.add('block');
+      
+      const alt = selectedImage.querySelector('img')?.getAttribute('alt') || '';
+      const tooltip = document.getElementById('image-alt');
+      if (tooltip) tooltip.textContent = alt;
+    }
+  }
+
+  function setRandomImage() {
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * totalImages);
+    } while (newIndex === currentIndex && totalImages > 1);
+    
+    currentIndex = newIndex;
+    showImage(currentIndex);
+  }
+
+  // Add click handler for refresh button
+  document.getElementById('refresh-image')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    setRandomImage();
+  });
+</script>
