@@ -1,6 +1,13 @@
 ---
 import { cn } from '@/utils'
-const { as: Tag = 'a', class: className, title, href, style = 'button' } = Astro.props
+const { 
+	as: Tag = 'a', 
+	class: className, 
+	title, 
+	href, 
+	style = 'button',
+	img
+} = Astro.props
 ---
 
 <Tag
@@ -13,7 +20,7 @@ const { as: Tag = 'a', class: className, title, href, style = 'button' } = Astro
 	href={href}
 	data-astro-prefetch
 >
-	<slot name='icon-before' />
+	{img && <span set:html={img} class="w-4 h-4" />}
 	<p>{title}</p>
 	<slot name='icon-after' />
 </Tag>
